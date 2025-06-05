@@ -119,7 +119,7 @@ void applyMapOperation() {
 }
 
 DinamicArray* createArray(size_t capacity) {
-    DinamicArray* arr = malloc(sizeof(DinamicArray));
+    DinamicArray* arr = (DinamicArray*)malloc(sizeof(DinamicArray));
     arr->data = malloc(capacity * sizeof(Person*));
     arr->size = 0;
     arr->capacity = capacity;

@@ -1,3 +1,5 @@
+#ifndef PERSON_H
+#define PERSON_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,21 +11,19 @@ typedef struct {
     int id;
     time_t birthDate;
 }Person;
-Person* createPerson(const char* name, const char* surname, 
-                    const char* f_name, int id, 
-                    time_t birthDate) {
+Person* createPerson(const char* first, const char* middle, const char* last, int id, time_t birth_date) {
     Person* p = (Person*)malloc(sizeof(Person));
     if (!p) return NULL;
 
-    p->name = strdup(name);
-    p->surname = strdup(surname);
-    p->f_name = strdup(f_name);
+    p->name = strdup(first);
+    p->surname = strdup(middle);
+    p->f_name = strdup(last);
     p->id = id;
-    p->birthDate = birthDate;
+    p->birthDate = birth_date;
     
     return p;
 }
-bool IsStudent (void* person){
+int IsStudent (void* person){
     Person* p = (Person*)person;
     if (p->id>100) return 1;
     return 0;
@@ -59,8 +59,9 @@ void printPerson(const Person* person) {
     char birthDateStr[20];
     strftime(birthDateStr, 20, "%d.%m.%Y", localtime(&person->birthDate));
     printf("Birth date: %s\n", birthDateStr);
-    if (IsStudent((Person*)person))
+    if (IsStudent((Person*)person)==1)
         printf("record number: %d\n", person->id);
     else printf("kafedra: %d\n", person->id);
     free(fullName);
 }
+#endif
