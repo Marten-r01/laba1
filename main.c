@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include"DinamicArray.h"
+#include"DynamicArray.h"
 #include"Person.h"
 #include "interfaic.h"
-
-int main(){
-    runInterface();
+#include "test.h"
+int main() {
+    testDynamicArray();
+    inter();
     return 0;
 }
